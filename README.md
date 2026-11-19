@@ -46,7 +46,7 @@ cp .env.example .env
 Add a YouTube API key to `.env`:
 
 ```env
-YOUTUBE_API_KEY=your_api_key_here
+YOUTUBE_API_KEY_AHMED=your_existing_api_key_here
 ```
 
 Run collectors:
@@ -133,3 +133,14 @@ Do not commit `.env`, API keys, or private credentials.
 ## 9. Citation
 
 If you use this dataset, cite the Kaggle dataset page and the relevant original data providers. Add a DOI after a citable release is created through the repository/platform workflow; do not invent a DOI in advance.
+
+
+## Reusing the existing Cristiano Ronaldo tracker API key
+
+This project is configured to reuse the existing YouTube Data API key under the name `YOUTUBE_API_KEY_AHMED`.
+
+- Local `.env`: set `YOUTUBE_API_KEY_AHMED=...`
+- GitHub: add a repository Actions secret named `YOUTUBE_API_KEY_AHMED`
+- Kaggle: retrieve it with `UserSecretsClient().get_secret("YOUTUBE_API_KEY_AHMED")` when running inside a Kaggle notebook.
+
+Both trackers consume quota from the same Google Cloud project/key. Monitor quota usage. Never commit the key or paste it into source code.
